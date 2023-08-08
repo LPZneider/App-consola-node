@@ -1,26 +1,44 @@
 require("colors");
 
-const { inquirerMenu, pausa } = require("./helpers/inquirer");
+const { inquirerMenu, pausa, readInput } = require("./helpers/inquirer");
+const { saveDB } = require("./helpers/saveFile");
 const Tasks = require("./models/Tasks");
-const Task = require("./models/task");
 // const { mostrarMenu, pausa } = require("./helpers/message");
-console.clear();
+// console.clear();
 
 const main = async () => {
-  console.log("Hola Mundo");
-
   let opt = "";
+  const tasks = new Tasks();
 
   do {
-    const task = new Task("comprar comida");
-    // opt = await inquirerMenu();
+    opt = await inquirerMenu();
 
-    const adaptTask = new Map();
-    adaptTask.set(task.id, task);
+    switch (opt) {
+      case "1":
+        // crear opcion
+        const desc = await readInput("Descripción de la tarea");
+        tasks.createTask(desc);
+        break;
+      case "2":
+        // crear
+        console.log(tasks.listadoArr);
+        break;
+      case "3":
+        // crear
+        break;
+      case "4":
+        // crear
+        break;
+      case "5":
+        // crear
+        break;
+      case "6":
+        // crear
+        break;
+    }
+    saveDB(tasks.listadoArr);
 
-    const tasks = new Tasks(adaptTask);
-
-    console.log(tasks);
+    console.log(opt);
 
     await pausa();
   } while (opt !== "0");
