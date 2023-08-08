@@ -65,4 +65,3 @@ module.exports = {
   inquirerMenu,
   pausa,
 };
-ñ;
