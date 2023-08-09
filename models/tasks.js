@@ -12,6 +12,14 @@ Tasks.prototype.listadoArr = function () {
   return listado;
 };
 
+Tasks.prototype.LoadTasksFromArray = function (tasks = []) {
+  const tasksMap = tasks.reduce((taskMap, value) => {
+    return taskMap.set(value.id, value);
+  }, new Map());
+
+  this._listado = tasksMap;
+};
+
 Tasks.prototype.createTask = function (desc = "") {
   const tarea = new Task(desc);
   this._listado.set(tarea.id, tarea);
