@@ -5,13 +5,11 @@ function Tasks() {
 }
 
 Tasks.prototype.listadoArr = function () {
-  const listado = [];
+  const listado = Array.from(this._listado, function (entry) {
+    return entry[1];
+  });
 
-  // Object.keys(this._listado).forEach((key) => {
-  //   console.log(key);
-  // });
-
-  return console.log("holaaaaaaaaaaaaaaa");
+  return listado;
 };
 
 Tasks.prototype.createTask = function (desc = "") {

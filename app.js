@@ -9,7 +9,7 @@ const Tasks = require("./models/Tasks");
 const main = async () => {
   let opt = "";
   const tasks = new Tasks();
-
+  // const listado = tasks.listadoArr();
   do {
     opt = await inquirerMenu();
 
@@ -21,7 +21,7 @@ const main = async () => {
         break;
       case "2":
         // crear
-        console.log(tasks.listadoArr);
+        console.log(tasks.listadoArr());
         break;
       case "3":
         // crear
@@ -36,9 +36,9 @@ const main = async () => {
         // crear
         break;
     }
-    saveDB(tasks.listadoArr);
+    // saveDB(tasks.listadoArr);
 
-    console.log(opt);
+    // console.log(opt);
 
     await pausa();
   } while (opt !== "0");
