@@ -14,6 +14,7 @@ const main = async () => {
     // establecemos
     tasks.LoadTasksFromArray(tasksDB);
   }
+
   do {
     opt = await inquirerMenu();
 
@@ -25,12 +26,15 @@ const main = async () => {
         break;
       case "2":
         // crear
-        console.log(tasks.listadoArr());
+        // console.log(tasks.listadoArr());
+        tasks.listComplete();
         break;
       case "3":
+        tasks.IsCompleteTask();
         // crear
         break;
       case "4":
+        tasks.IsCompleteTask(false);
         // crear
         break;
       case "5":
@@ -40,7 +44,7 @@ const main = async () => {
         // crear
         break;
     }
-    // saveDB(tasks.listadoArr());
+    saveDB(tasks.listadoArr());
 
     await pausa();
   } while (opt !== "0");
