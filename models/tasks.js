@@ -50,4 +50,7 @@ Tasks.prototype.IsCompleteTask = function (isComplete = true) {
   });
 };
 
+Tasks.prototype.deleteTask = function (id = "") {
+  this._listado.delete(id);
+};
 module.exports = Tasks;

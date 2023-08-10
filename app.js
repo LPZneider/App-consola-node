@@ -1,6 +1,11 @@
 require("colors");
 
-const { inquirerMenu, pausa, readInput } = require("./helpers/inquirer");
+const {
+  inquirerMenu,
+  pausa,
+  readInput,
+  listTasksDelete,
+} = require("./helpers/inquirer");
 const { saveDB, readDB } = require("./helpers/saveFile");
 const Tasks = require("./models/Tasks");
 // const { mostrarMenu, pausa } = require("./helpers/message");
@@ -41,12 +46,14 @@ const main = async () => {
         // crear
         break;
       case "6":
+        const id = await listTasksDelete(tasks.listadoArr());
+        console.log(id);
         // crear
         break;
     }
     saveDB(tasks.listadoArr());
 
-    await pausa();
+    if (opt !== "0") await pausa();
   } while (opt !== "0");
 };
 

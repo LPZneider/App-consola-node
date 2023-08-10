@@ -43,7 +43,7 @@ const questions = [
 const inquirerMenu = async () => {
   // console.clear();
   console.log("============================".green);
-  console.log("   Seleccione una opción".green);
+  console.log("   Seleccione una opción ".green);
   console.log("============================\n".green);
 
   const { option } = await inquirer.prompt(questions);
@@ -81,8 +81,33 @@ const readInput = async (message) => {
   const { desc } = await inquirer.prompt(question);
   return desc;
 };
+
+const listTasksDelete = async (tasks = []) => {
+  const choices = tasks.map((task, i) => {
+    const idx = `${i + 1}`.green;
+    return {
+      value: task.id,
+      name: `${idx} ${task.desc}`,
+    };
+  });
+
+  const questions = [
+    {
+      type: "list",
+      name: "id",
+      message: "¿Que desea eliminar?",
+      choices,
+    },
+  ];
+
+  const { id } = await inquirer.prompt(questions);
+
+  return id;
+};
+
 module.exports = {
   inquirerMenu,
   pausa,
   readInput,
+  listTasksDelete,
 };
