@@ -53,4 +53,19 @@ Tasks.prototype.IsCompleteTask = function (isComplete = true) {
 Tasks.prototype.deleteTask = function (id = "") {
   this._listado.delete(id);
 };
+
+Tasks.prototype.toggleComplete = function (ids = []) {
+  ids.forEach((id) => {
+    const task = this._listado.get(id);
+    if (!task.completeIn) {
+      task.completeIn = new Date().toISOString();
+    }
+  });
+
+  this.listadoArr().forEach((task) => {
+    if (!ids.includes(task.id)) {
+      this._listado.set(task.id, { ...task, completeIn: null });
+    }
+  });
+};
 module.exports = Tasks;
