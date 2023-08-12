@@ -14,6 +14,7 @@ const Tasks = require("./models/Tasks");
 // console.clear();
 
 const main = async () => {
+  console.clear();
   let opt = "";
   const tasks = new Tasks();
   const tasksDB = readDB();
